@@ -27,15 +27,14 @@ const[selectedTopic, setSelectedTopic]=useState();
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept {...CORE_CONCEPTS[0]} />
-            <CoreConcept {...CORE_CONCEPTS[1]} />
-            <CoreConcept {...CORE_CONCEPTS[2]} />
-            <CoreConcept {...CORE_CONCEPTS[3]} />
+          {CORE_CONCEPTS.map((item)=>  <CoreConcept key = {item.title} {...item} />) }
+            
           </ul>
         </section>
         <section id="examples">
           <h2>Examples</h2>
           <menu>
+           
             <TabButton isSelected={selectedTopic== 'components'} onSelect={()=>handleClick('components')}>Components</TabButton>
             <TabButton isSelected={selectedTopic== 'jsx'} onSelect={()=>handleClick('jsx')}>JSX</TabButton>
             <TabButton isSelected={selectedTopic== 'props'} onSelect={()=>handleClick('props')}>Props</TabButton>
