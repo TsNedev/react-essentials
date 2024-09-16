@@ -9,8 +9,8 @@ import { EXAMPLES } from "./data.js";
 
 
 function App() {
-const[selectedTopic, setSelectedTopic]=useState('components'); 
-  let tabContent ='please click a  button';
+const[selectedTopic, setSelectedTopic]=useState(); 
+ 
 
   function handleClick(selectedButton){
     setSelectedTopic(selectedButton)
@@ -41,8 +41,7 @@ const[selectedTopic, setSelectedTopic]=useState('components');
             <TabButton onSelect={()=>handleClick('props')}>Props</TabButton>
             <TabButton onSelect={()=>handleClick('state')}>State</TabButton>
           </menu>
-      
-           <div id="tab-content">
+      {!selectedTopic ? <p>Please select a topic.</p> : <div id="tab-content">
             <h3>{topicInfo.title}</h3>
             <p>{topicInfo.description}</p>
             <pre>
@@ -50,8 +49,9 @@ const[selectedTopic, setSelectedTopic]=useState('components');
               {topicInfo.code}
               </code>
             </pre>
-           </div>
-         
+           </div> }
+
+     
         </section>
       </main>
     </div>
