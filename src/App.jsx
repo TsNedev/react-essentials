@@ -3,13 +3,13 @@ import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import { CORE_CONCEPTS } from "./data.js"
 import TabButton from "./components/TabButton.jsx";
 import { useState } from "react";
-
+import { EXAMPLES } from "./data.js";
 
 
 
 
 function App() {
-const[selectedTopic, setSelectedTopic]=useState('please click a button'); 
+const[selectedTopic, setSelectedTopic]=useState('components'); 
   let tabContent ='please click a  button';
 
   function handleClick(selectedButton){
@@ -17,6 +17,8 @@ const[selectedTopic, setSelectedTopic]=useState('please click a button');
     
         }
 
+        const topicInfo = EXAMPLES[selectedTopic];
+       
   return (
     
     <div>
@@ -39,7 +41,17 @@ const[selectedTopic, setSelectedTopic]=useState('please click a button');
             <TabButton onSelect={()=>handleClick('props')}>Props</TabButton>
             <TabButton onSelect={()=>handleClick('state')}>State</TabButton>
           </menu>
-            {selectedTopic}
+      
+           <div id="tab-content">
+            <h3>{topicInfo.title}</h3>
+            <p>{topicInfo.description}</p>
+            <pre>
+              <code>
+              {topicInfo.code}
+              </code>
+            </pre>
+           </div>
+         
         </section>
       </main>
     </div>
